@@ -12,3 +12,17 @@ BEGIN
     END LOOP;
 END;
 /
+DECLARE
+CURSOR c_recinto is SELECT * FROM RECINTO;
+
+v_contadorRec NUMBER := 1;
+BEGIN
+
+    FOR por_cada_recinto in c_recinto LOOP
+    DBMS_OUTPUT.PUT_LINE('nombre del recinto: '||por_cada_recinto.nombre);
+    DBMS_OUTPUT.PUT_LINE('recinto: '||v_contadorRec);
+    v_contadorRec := v_contadorRec+1;
+    END LOOP;
+END;
+/
+--cursor con parametros
