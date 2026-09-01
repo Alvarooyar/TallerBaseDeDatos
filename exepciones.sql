@@ -25,8 +25,11 @@ EXCEPTION
 
 END;
 /
-
+--value error 
 DECLARE
+    v_texto VARCHAR2(5);
 BEGIN
-
+    v_texto:='esto es un texto demaciado largo para ser escrito por mi';
+EXCEPTION VALUE_ERROR THEN
+    DBMS_OUTPUT.PUT_LINE('NO SE PUEDE DIVIDIR POR CERO');
 END;
