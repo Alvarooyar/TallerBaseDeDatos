@@ -1,0 +1,2 @@
+--crear un procedimiento almacenado que devuelva
+--los datos de un cliente segun su id
