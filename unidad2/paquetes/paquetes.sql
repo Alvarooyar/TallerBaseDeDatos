@@ -22,7 +22,14 @@ FUNCTION fn_verificar_stock(p_localidad_evento_id IN NUMBER)
     PROCEDURE sp_vender_entrada(p_localidad_evento_id IN NUMBER,
     p_cantidad_entradas_a_comprar IN NUMBER)
     AS
+        v_stock_disponible NUMBER;
     BEGIN
+        v_stock_disponible := fn_verificar_stock(p_localidad_evento_id);
+        IF v_stock_disponible <= 0 THEN
+            RAISE_APPLICATION_ERROR(-20001, 'no queda stock para ese evento en concreto');
+        END IF;
+        UPDATE LOCALIDAD_EVENTO SET STOCK_DISPONIBLE = STOCK_DISPONIBLE - p_cantidad_entradas_a_comprar 
+        WHERE LOCALIDAD_EVENTO_ID=p_localidad_evento_id;
     END sp_vender_entrada;
 
 END pkg_boletaria;
