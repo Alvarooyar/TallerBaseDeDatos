@@ -1,3 +1,4 @@
+--ejemplo mio 
 --necesita el SPEC del package
 CREATE OR REPLACE PACKAGE pkg_boletaria
 AS
