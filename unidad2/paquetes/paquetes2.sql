@@ -100,3 +100,15 @@ END pkg_boleteria;
 
 SELECT STOCK_DISPONIBLE FROM LOCALIDAD_EVENTO WHERE LOCALIDAD_EVENTO_ID = 1;
 
+/
+DECLARE
+  v_stock number;
+BEGIN
+  v_stock := PKG_BOLETERIA.FN_VERIFICAR_STOCK(1);
+  DBMS_OUTPUT.PUT_LINE(v_stock);
+  PKG_BOLETERIA.SP_VENTA_ENTRADA(1 , 3);
+  DBMS_OUTPUT.PUT_LINE('se vendieron esta cantidad de entradas:');
+
+  DBMS_OUTPUT.PUT_LINE('el total de entradas vendidas es: '|| PKG_BOLETERIA.g_cantidad_entradas_vendidas);
+END;
+/
